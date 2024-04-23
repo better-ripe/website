@@ -1,0 +1,31 @@
+# This is better-ripe initiative website
+
+## Deployment runbook
+
+### 1. Install dependencies on remote host
+
+TODO
+
+### 2. Generate new ssh key on your machine
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "$(git config user.email)" -f gh-deploy -N ""
+```
+
+### 3. Add new ssh key to your GitHub account
+
+* Next, Go to Repository Settings
+* * Go to Deploy Keys and add your public key with the Allow write access
+* * Go to Secrets and add your private key as ACTIONS_DEPLOY_KEY
+
+### 4. Add new ssh key to your remote host
+
+```bash
+ssh-copy-id -i gh-deploy.pub deploy@remotehost
+```
+
+### 5. Add remote host to your repository variables
+
+* Go to Repository Settings
+* Go to Secrets and add your remote host as ACTIONS_DEPLOY_HOST
+

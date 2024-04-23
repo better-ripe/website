@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-22.04
+    environment: sshdeploy
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
@@ -20,8 +21,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.125.3'
-          # extended: true
+          hugo-version: '0.119.0'
+          extended: true
 
       - name: Build
         run: cd better-ripe;hugo --minify
@@ -36,13 +37,12 @@ jobs:
       - name: Deploy over SSH
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
-          server: ${{ secrets.HOSTING_DEPLOY_HOST }}
-          remote_port: 22
-          server_user: deploy
-          server_key: ${{ secrets.HOSTING_DEPLOY_KEY }}
-          local_path: './public'
-          remote_path: /var/www/html
-          args: '-avz --delete'
-          branch: 'main'
+          REMOTE_HOST: ${{ secrets.HOSTING_DEPLOY_HOST }}
+          REMOTE_USER: deploy
+          REMOTE_PORT: 22
+          SOURCE: "better-ripe/public/"
+          TARGET: "/var/www/html"
+          ARGS: "-avz --delete"
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTING_DEPLOY_KEY }}
           # dry_run: true
           # debug: true

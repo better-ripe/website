@@ -24,11 +24,25 @@ jobs:
           # extended: true
 
       - name: Build
-        run: hugo --minify
+        run: cd better-ripe;hugo --minify
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        if: github.ref == 'refs/heads/main'
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./public
+
+      - name: Deploy over SSH
+        uses: easingthemes/ssh-deploy@v2.1.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          server: ${{ secrets.HOSTING_DEPLOY_HOST }}
+          remote_port: 22
+          server_user: deploy
+          server_key: ${{ secrets.HOSTING_DEPLOY_KEY }}
+          local_path: './public'
+          remote_path: /var/www/html
+          args: '-avz --delete'
+          branch: 'main'
+          # dry_run: true
+          # debug: true

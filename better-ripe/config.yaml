@@ -27,14 +27,14 @@ params:
     facebook: "#"
     twitter: "#"
 
-  location:
-    - "3891 Ranchview Dr. Richardson, California 62639"
-    - "4517 Washington Ave. Manchester, Kentucky 39495"
+#  location:
+#    - "3891 Ranchview Dr. Richardson, California 62639"
+#    - "4517 Washington Ave. Manchester, Kentucky 39495"
 
   contact:
-    - "better-ripe@noop"
+    - "Telegram: https://t.me/ripe_budget_talks"
 
-  copyright: "© 2022 Up Business All Rights Reserved"
+  copyright: "© 2024 Better RIPE initiative"
 
 menus:
   main:
@@ -59,7 +59,7 @@ menus:
       weight: 5
 
   buttons:
-    - name: "Book a call"
+    - name: "Join us"
       url: "/#"
       weight: 5
       pre: "btn btn-primary text-light"
@@ -69,7 +69,7 @@ menus:
       url: "/#hero"
       weight: 1
 
-    - name: "How we work"
+    - name: "News"
       url: "/#"
       weight: 2
 

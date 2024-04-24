@@ -32,7 +32,7 @@ params:
 #    - "4517 Washington Ave. Manchester, Kentucky 39495"
 
   contact:
-    - "Telegram: https://t.me/ripe_budget_talks"
+    - "Telegram: @ripe_budget_talks"
 
   copyright: "© 2024 Better RIPE initiative"
 
@@ -59,8 +59,8 @@ menus:
       weight: 5
 
   buttons:
-    - name: "Join us"
-      url: "/#"
+    - name: "Join chat"
+      url: "https://t.me/ripe_budget_talks"
       weight: 5
       pre: "btn btn-primary text-light"
 

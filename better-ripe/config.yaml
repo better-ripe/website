@@ -50,8 +50,8 @@ menus:
       url: "/#"
       weight: 3
 
-    - name: "Investigation"
-      url: "/#"
+    - name: "Initiatives"
+      url: "/initiatives/details/"
       weight: 4
 
     - name: "Blog"
@@ -77,8 +77,8 @@ menus:
       url: "/#"
       weight: 3
 
-    - name: "Investigation"
-      url: "/#"
+    - name: "Initiatives"
+      url: "/initiatives/details/"
       weight: 4
 
     - name: "Blog"

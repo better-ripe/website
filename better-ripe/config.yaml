@@ -43,20 +43,21 @@ menus:
       weight: 1
 
     - name: "News"
-      url: "/#"
+      url: "/news"
       weight: 2
 
     - name: "Our team"
-      url: "/#"
+      url: "/team"
       weight: 3
 
     - name: "Initiatives"
       url: "/initiatives/details/"
       weight: 4
 
-    - name: "Blog"
-      url: "/blog"
+    - name: "About & Legal"
+      url: "/about"
       weight: 5
+
 
   buttons:
     - name: "Join chat"
@@ -70,20 +71,21 @@ menus:
       weight: 1
 
     - name: "News"
-      url: "/#"
+      url: "/news"
       weight: 2
 
     - name: "Our team"
-      url: "/#"
+      url: "/team"
       weight: 3
 
     - name: "Initiatives"
       url: "/initiatives/details/"
       weight: 4
 
-    - name: "Blog"
-      url: "/blog"
+    - name: "About & Legal"
+      url: "/about"
       weight: 5
+
 
 taxonomies:
   series: "series"

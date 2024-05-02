@@ -26,19 +26,14 @@ This is a list of initiatives that we are considering to start, but we need more
 
 ### Budget related
 
-- [Hiring freeze and audit](/initiatives/hiring-freeze/)
+- [Hiring freeze and audit](/initiatives/hiring_freeze/)
 - [RIPE NCC budget transparency](/initiatives/budget-transparency/)
 - [RIPE NCC non-core services](/initiatives/non-core-services/)
-- [RIPE NCC budget decisionmaking](/initiatives/budget-decisionmaking/)
 - [Members fees structure](/initiatives/members-fees/)
-- [IPv6 only members](/initiatives/ipv6-only-members/)
-- [Voluntary contributions](/initiatives/voluntary-contributions/)
-- [Open tenders](/initiatives/open-tenders/)
 
 ### Misc
 
 - [Value of RIPE NCC membership](/initiatives/value-of-ripe-ncc-membership/)
-- [Tenure limits](/initiatives/tenure-limits/)
 - [IPv6 promotion](/initiatives/ipv6-promotion/)
-- [Accessiblity](/initiatives/accessibility/)
+- [Accessiblity, Languages](/initiatives/accessibility/)
 

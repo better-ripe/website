@@ -6,8 +6,8 @@ content:
   text: "Read newsletters, proposals, send your feedback and VOTE"
 
   buttonPrimary:
-    label: "How we work"
-    url: "#"
+    label: "Why?"
+    url: "/why"
 
   buttonSecondary:
     label: "Let's talk"

@@ -12,4 +12,4 @@ tags = ["index"]
 
 ## Supporting team
 
-- [Denys Fedoryshchenko](/team/denys/)
+- [Denys Fedoryshchenko](/teammates/denys/)

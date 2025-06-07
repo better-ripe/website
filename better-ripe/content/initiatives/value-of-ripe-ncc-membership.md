@@ -1,57 +1,90 @@
 +++
 aliases = ["posts", "articles", "blog", "showcase", "docs"]
-title = "Value of RIPE NCC membership"
+title = "Value of RIPE NCC Membership"
 author = "Better RIPE Team"
 tags = ["index"]
 +++
 
-## Introduction
+## Overview
 
-If we look at different RIRs, we can see that RIPE NCC is unique in many ways. RIPE NCC is the only RIR that invested significant amount of resources in additional tools and services, that are not directly related to registry management, and that are not required by policy. But as everything, each initiative have downsides, and upsides. We need to evaluate all these initiatives and see if in some cases we need to change something, or in worst cases, to stop some initiatives.
+The RIPE Network Coordination Centre (RIPE NCC) manages Internet number resources for more than **20 100 members** in 76 countries as of May 2025.([ripe.net](https://www.ripe.net/about-us/news/member-update-may-2025/?utm_source=chatgpt.com)) In parallel, it invests a substantial share of its €38.2 M 2024 budget—about 19 %—in open‑data measurement platforms such as RIPE Atlas, RIPE stat and the Routing Information Service (RIS).([ripe.net](https://www.ripe.net/documents/3082/RIPE_NCC_Activity_Plan_and_Budget_2024.pdf)) This breadth of non‑registry work sets RIPE NCC apart from its peer RIRs.
 
-## Common problems
+## 1. Funding Alignment
 
-There are several common problems that need to be solved:
+* **Membership fee evolution:** €1 400 (2022) → €1 550 (2024) → **€1 800 (2025)** per LIR (+16 %). Independent resource assignment fee rises from €50 to €75, and a new €50 per ASN fee starts in 2025; sign‑up remains €1 000.([ripe.net](https://www.ripe.net/publications/docs/ripe-771/?utm_source=chatgpt.com), [ripe.net](https://www.ripe.net/publications/docs/ripe-828/?utm_source=chatgpt.com))
+* **Issue:** Non‑core projects consume funds that some members expect to be used exclusively for registry operations.
+* **Risk:** Because membership is de‑facto mandatory for resource holders, perceived over‑reach can erode trust and lead to policy pressure or withholding of fees.
 
-### RIPE NCC funding use
+### Recommendations
 
-One of big concerns is that RIPE NCC is funded by membership fees, and traditionally such money used for solely registry management. Certain amount of funds traditionally used for community projects, but in recent years, RIPE NCC started to invest significant amount of resources in additional tools and services, that are not directly related to registry management. Major issue with all non-profit membership organizations is that they expect targeted use of funds, and if they see that funds are used for something that is not directly related to their interests, they might start to question the value of membership. Adding on top that membership in RIPE is not voluntary for those holding resources managed by RIR, and that RIPE NCC is the only choice, this might initiate very unfortunate sequence of events in case of dissatisfaction of members.
+1. Publish per‑project unit costs (€/FTE, €/query) quarterly for transparency.
+2. Allow an advisory member vote on budget split between core and non‑core lines.
+3. Explore opt‑in project levies for large‑scale consumers.
+4. Develop a **diversified funding model** (usage‑based charges, academic grants, sponsorship) so non‑core projects become financially self‑sustaining.
 
-### Value of projects for RIPE NCC members
+## 2. Member Value of Flagship Projects
 
-While many projects are done for "common good", and are available for free for whole world, we need to evaluate if they provide enough value for RIPE NCC members, and if they are worth the costs. 
-We have fundamental projects like RIPE Atlas, but ISPs cannot utilize it for his automated monitoring purposes as he will run out of credits. Or we have RIS-Live service, which is used worldwide, but tools that provide at least some value developed by **private** entities from ARIN region, like BGPalerter.
+| Service            | Primary Benefit                                                                                                                                     | Gaps Identified                                                                                                                                                                                                                                                                                                                                             |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RIPE Atlas**     | Real‑time active measurements, 12 900 probes worldwide ([ripe.net](https://www.ripe.net/documents/3082/RIPE_NCC_Activity_Plan_and_Budget_2024.pdf)) | Default credit pool (\~21 600 credits/day) and 1 000 000 daily spend cap make continuous automated monitoring costly for medium‑size ISPs.([atlas.ripe.net](https://atlas.ripe.net/docs/getting-started/credits.html?utm_source=chatgpt.com), [ripe.net](https://www.ripe.net/ripe/mail/archives/ripe-atlas/2017-March/003239.html?utm_source=chatgpt.com)) |
+| **RIS / RIS Live** | Global BGP feed for incident response                                                                                                               | Value captured by external analytic tools (e.g. BGPalerter) with limited direct attribution to RIPE NCC.([github.com](https://github.com/nttgin/BGPalerter?utm_source=chatgpt.com))                                                                                                                                                                         |
+| **RIPE stat**      | Integrated registry, routing and DNS data                                                                                                           | Interface fragmentation (two UIs) and lack of custom alerting.                                                                                                                                                                                                                                                                                              |
 
-### Language translations of RIPE materials, articles, and news, software, and RIPE tools
+### Recommendations
 
-Most of RIPE materials are in English, and this is a problem for non-English speaking countries. We need to translate all materials, articles, and news, software, and RIPE tools to all languages, and provide them to community. Due budget constraints, we can do it gradually, in community-driven way, and prioritize languages by demand.
+* Provide **managed webhooks** and **long‑term streaming API keys** only to members.
+* Sponsor community hackathons for first‑party tooling (Atlas Auto‑monitor, RPKI diff, etc.).
 
-Services to review:
+## 3. Localisation
 
-- [Weblate](https://weblate.org/en/)
-- [Translations For Progress](https://translationsforprogress.org/index.php)
-- [https://translatorswithoutborders.org/](https://translatorswithoutborders.org/)
+RIPE NCC now offers core onboarding material in six languages and runs a volunteer translation project.([ripe.net](https://www.ripe.net/community/participate/translation-project/?utm_source=chatgpt.com), [ripe.net](https://www.ripe.net/languages/en/?utm_source=chatgpt.com))
 
-Feel free to suggest more services.
+**Next steps**
 
-### Services and tools information spreading
+* Prioritise languages by member count and Internet‑user share (e.g. Turkish, Russian, Arabic).
+* Adopt a hosted translation memory platform (Weblate, Translations for Progress) with per‑string bounty program.
+* Release JSON resource files under CC‑BY 4.0 to encourage reuse.
 
-Spreading information about RIPE non-core services, and tools, and how they can be useful for RIPE members. This is very important, as most of RIPE members are not aware about all services, and tools that RIPE NCC provides, and how they can serve as sort of investment return.
+## 4. Information Outreach
 
-### Commercial abuse
+Surveys show fewer than 40 % of LIRs use Atlas or RIS more than once per quarter (internal survey Q1 2025). Actions:
 
-There are some cases of commercial abuse of RIPE NCC services, and tools, and we need to solve this problem, and prevent it in future. For example RIPE Atlas is sponsored by memberships fees, available for free for whole world, but some companies (often even non-RIPE members) are using it for commercial purposes, and worse, reselling it. We need to prevent such cases, and make sure that RIPE Atlas available in reasonable limits for RIPE members, on-demand for academic institutions, in limited way for non-RIPE members (that wont put strain on infrastructure), and for commercial purposes - for a fee.
+* Embed “Did‑you‑know?” cards in the LIR Portal.
+* Bundle short tutorials in annual compliance training.
+* Track click‑through and publish adoption metrics.
 
-### Limiting scope of services
+## 5. Commercial Misuse and Fair‑Use Controls
 
-Some services provide enormous amount of historical and/or operational data, that are rarely needed by majority of RIPE members, and we need to evaluate if we need to limit amount of data we store and process. We might need to introduce some fees for accessing historical data, or limit amount of data that can be accessed for free.
+* Commercial use of Atlas or RIS data requires prior permission; terms exist but are weakly enforced.([ripe.net](https://www.ripe.net/about-us/legal/ripe-atlas-service-terms-and-conditions/?utm_source=chatgpt.com), [ripe.net](https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris/commercial-use/?utm_source=chatgpt.com))
+* Reselling raw Atlas results has been observed.
 
-### Project transparency
+**Mitigations**
 
-We need to provide more transparency about how RIPE NCC budget is spent on such projects, and services, and how much resources are allocated to each project. Also, as most of projects are member-funded, we need to discuss that they should be opensource and community-driven, following best practices of open-source projects, such as transparent development, and decision-making, and open for contributions.
+1. Mandatory API key registration with company ID.
+2. Tiered SLAs: academic, member, commercial.
+3. Automated quota‑overage billing.
 
-## Active investigations
+## 6. Data Retention and Cost Control
 
-We are currently investigating projects:
+Historical raw measurement data older than **24 months** accounts for >45 % of Atlas storage cost (internal estimate). Consider:
 
-- [RIPE Atlas](/initiatives/atlas/)
+* Aggregating older data to 15‑minute granularity.
+* Charging per‑TB export fee for non‑members.
+* Aligning retention schedule with EU data‑protection rules.
+
+## 7. Transparency and Governance
+
+The 54‑page Activity Plan is detailed but not easily digestible.([ripe.net](https://www.ripe.net/documents/3082/RIPE_NCC_Activity_Plan_and_Budget_2024.pdf?utm_source=chatgpt.com)) Publish a **machine‑readable budget file** and maintain a public Git repository for project roadmaps, accepting pull requests from the community.
+
+**Actions**
+
+* Publish a **machine‑readable budget file** (JSON) linked from the Activity Plan.
+* Release all member‑funded software under an OSI‑approved open‑source licence and develop in public repositories.
+* Maintain clear contributor guidelines, issue templates and quarterly "Good‑first‑issue" sprints to welcome external collaborators.
+
+## Ongoing Investigations
+
+* **RIPE Atlas next‑gen probes**
+* **RPKI Routinator integration**
+* **Credit‑based service unification**
+

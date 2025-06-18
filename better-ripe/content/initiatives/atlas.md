@@ -1,59 +1,102 @@
 +++
 aliases = ["posts", "articles", "blog", "showcase", "docs"]
-title = "RIPE Atlas Project state"
-author = "Better RIPE Team"
-tags = ["index"]
+title   = "State of the RIPE Atlas Project – June 2025"
+author  = "Better RIPE Team"
+tags    = ["index"]
 +++
 
-## Introduction
+### Introduction
 
-The RIPE Atlas project is a global network of probes that measure Internet connectivity and reachability. The probes are distributed around the world and are hosted by volunteers. The project is operated by the RIPE NCC, one of the five Regional Internet Registries (RIRs) that manage the allocation of IP addresses and AS numbers.
+RIPE Atlas is the world’s largest open Internet-measurement network, with **“12 000-plus distributed probes”** collecting real-time data from thousands of vantage-points worldwide ([labs.ripe.net][1]). The service is run by the RIPE NCC (one of the five RIRs).
 
-## History of project
+---
 
-The RIPE Atlas project was launched in 2010. The project was created to provide a global, distributed, and open platform for Internet measurement. The project was designed to be easy to use and to provide a wide range of measurement capabilities. The project has grown rapidly since its launch, at 2023 there are 12081 probes connected.
+### Historical context
 
-## Project goals
+| Year | Milestone                                                                                                                                                        |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2010 | Project launched.                                                                                                                                                |
+| 2015 | **Hadoop era** – two 119-node Cloudera CDH clusters (≈400 TB HDFS, 3.5 TB RAM, 80 Gbit/s) processed Atlas + RIPEstat data ([labs.ripe.net][2])                   |
+| 2023 | Only *one* visible roadmap deliverable (“Renew data streaming”, finished Q1 2023) ([ripe.net][3])                                                                |
+| 2024 | **Hybrid-storage migration** started: hot data on a new bare-metal cluster, cold data moved to AWS S3 → goal: cut 46 racks → 10 by end-2025 ([labs.ripe.net][4]) |
+| 2025 | Q2 2025 plan focuses on UI renewal, full containerisation, probe-farm abuse limits and firmware packaging ([ripe.net][5])                                        |
 
-The RIPE Atlas project has several goals. The project is designed to provide a global, distributed, and open platform for Internet measurement. The project is also designed to be easy to use and to provide a wide range of measurement capabilities. The project is intended to help improve the security, stability, and resilience of the Internet. The project is also intended to help improve the performance and reliability of the Internet.
-But one of problems is that project doesn't add direct value to RIPE NCC members, so it's hard to justify the costs of the project. We believe with slight changes in project direction and more active community involvement we can make it more valuable and usable for the community.
+---
 
-## Project architecture
+### Code & firmware activity
 
-While source code is open, project architecture is not documented. This requires reverse engineering to understand how the project works. This is a significant barrier to entry for new contributors. We believe that documenting the project architecture would make it easier for new contributors to get involved and would help to grow the community around the project.
+*Firmware release cadence illustrates a clear gap followed by renewed work.*
 
-## Project state
+| Version  | Date            | Gap (months) |
+| -------- | --------------- | ------------ |
+| 5080     | 23 Sep 2022     | –            |
+| **5090** | **12 Jul 2024** | **22**       |
+| 5100     | 24 Sep 2024     | 2            |
+| 5110     | 03 Apr 2025     | 6            |
 
-[2015 Article](https://labs.ripe.net/author/paul_de_weerd/processing-ripe-atlas-and-ripestat-data-with-hadoop/)
+Source: RIPE Atlas firmware index ([atlas.ripe.net][6]).
+The **22-month hiatus (Oct 2022 → Jul 2024)** was widely criticised on the Atlas mailing list; see the thread *“Meaning and the future of the project”* (6 Feb 2024) ([ripe.net][7]). Within five months of that discussion, the project shipped the first new firmware in almost two years and resumed a roughly quarterly release rhythm.
 
-- Cloudera's Hadoop distribution
-- two clusters with 119 servers
-- HDFS 400TB, 3.5TB RAM, and peak cluster bandwidth of 80Gbit/s (~32GB ram per server?)
+Similar stagnation affected the public GitHub tools (e.g. `ripe-atlas-tools`, `ripe-atlas-probe-measurements`). Commits restarted mid-2024 in parallel with the firmware work; maintainers are again triaging issues and PRs.
 
-## Initiative status
+---
 
-- Research
+### Architecture documentation
 
-## Questions to answer
+Until 2024 most internal architecture was undocumented; contributors relied on a 2017 Labs post for high-level diagrams ([labs.ripe.net][8]). Following repeated community requests, RIPE NCC added:
 
-- Last 2 years there is a lot of complaints about the project abandonment, lack of updates, and communication with the community. What is the current state of the project?
-- Some important questions in maillist left unanswered [link](https://www.ripe.net/ripe/mail/archives/ripe-atlas/2024-February/005698.html)
-- Github repositories have no updates for 1-2 years (state at 1 May 2024) [link](https://github.com/RIPE-NCC/ripe-atlas-probe-measurements) [link](https://github.com/RIPE-NCC/ripe-atlas-tools)
-- Github maintainers are not active, not reviewing PRs, not responding to issues
-- No communication about development process with community (roadmap, plans, weekly updates)
-- Project code is non-portable, visible legacy from Lantronix times, which limits the ability to run it on different platforms. With some upstreaming efforts we can get much greater coverage.
-- Choice of platforms quite exotic, while much more common platforms are available.
+* **Comprehensive docs site** (`atlas.ripe.net/docs/…`) with sections on controller/probe security, REST/streaming APIs and probe source code ([atlas.ripe.net][9]).
+* Public firmware-build CI and cross-architecture packages (v5 HW, OpenWrt, Debian, CentOS) in 2024-2025 firmware releases ([atlas.ripe.net][10]).
 
-## Discussion
+---
 
-Short discussion in telegram about opensource, community-funded projects, and how they should be managed, and accountability turned into argument, that certain parts of typical
-opensource projects are not applicable to RIPE NCC projects, and that RIPE NCC is not a typical opensource project.
-> what you should remember is that a lot of the software the NCC develops is not typical open source projects, it is software specifically made for the NCC
+### Backend evolution
 
-On [my](/team/nuclearcat) opinion if this is considered seriously and there is no intention to make process more transparent and project community-driven, then there is serious reason to fork Atlas initiative and make it community-driven, and opensource, and make it more valuable for the community and find proper sponsorship.
-By this reason i am not willing to publish project roadmap proposal, as situation might turn into fair competition between community-driven project and RIPE NCC project.
+Old: 400 TB on-prem Hadoop/HBase (2015 design) ([labs.ripe.net][2]).
+New (2024-): **tiered object + bare-metal storage** – hot data local, ≥2021 data served from S3; full decommission of Hadoop cluster planned Aug 2024 ([labs.ripe.net][4]). Migration driven by rising DC costs and pushed forward after public feedback.
 
-References:
-- [RIPE Atlas project](https://atlas.ripe.net/)
-- [RIPE NCC](https://www.ripe.net/)
-- [RIPE Atlas wikipedia page](https://en.wikipedia.org/wiki/RIPE_Atlas)
+---
+
+### Governance & planning
+
+* **Quarterly plans** have been published since Q2 2022. 2023 showed *one* substantive Atlas work-item; the lightweight output bolstered claims of stagnation ([ripe.net][3]).
+* **Q2 2025 plan** lists five active work-streams and is updated transparently on the RIPE site ([ripe.net][5]).
+
+---
+
+### Current status (-06 / 2025)
+
+* **Network size:** >12 k probes, coverage concentrated in Europe; new distribution policy targets under-represented ASNs and regions ([labs.ripe.net][1]).
+* **Codebase:** Firmware and tools again under active maintenance after 2022–2024 lull.
+* **Backend:** Hadoop cluster being retired; hybrid object storage already serving pre-2021 data.
+* **Docs:** Security, API and firmware build docs now public; deeper controller design still missing.
+* **Community dialogue:** Mailing-list questions now receive responses; Roadmap items tracked quarterly.
+
+---
+
+### Take-aways
+
+1. **Community pressure worked.** The February 2024 mailing-list critique directly preceded firmware, code and planning updates.
+2. **Technical debt is being paid down.** Containerisation, CI, hybrid storage and anti-“probe-farm” controls are in progress.
+3. **Still to fix:** sparse contributor guidelines, opaque controller internals, and limited probe diversity outside Europe.
+
+The RIPE Atlas project is no longer “abandoned”, but sustained transparency and timely releases will determine whether the 2024-2025 momentum endures.
+
+[1]: https://labs.ripe.net/author/ulka_athale_1/how-we-distribute-ripe-atlas-probes/ "How We Distribute RIPE Atlas Probes | RIPE Labs"
+[2]: https://labs.ripe.net/author/paul_de_weerd/processing-ripe-atlas-and-ripestat-data-with-hadoop/ "Processing RIPE Atlas and RIPEstat Data with Hadoop | RIPE Labs"
+[3]: https://www.ripe.net/publications/documentation/quarterly-planning/ripe-atlas/archived-plans/ "
+      
+        Archived Plans — RIPE Network Coordination Centre
+      
+    "
+[4]: https://labs.ripe.net/author/felipe_victolla_silveira/reducing-the-ripe-nccs-data-centre-footprint/ "Reducing the RIPE NCC's Data Centre Footprint | RIPE Labs"
+[5]: https://www.ripe.net/publications/documentation/quarterly-planning/ripe-atlas/ "
+      
+        RIPE Atlas Quarterly Planning — RIPE Network Coordination Centre
+      
+    "
+[6]: https://atlas.ripe.net/docs/releases/firmware.html?utm_source=chatgpt.com "Probe Firmware Releases | Docs - RIPE Atlas"
+[7]: https://www.ripe.net/ripe/mail/archives/ripe-atlas/2024-February/005698.html " [atlas] Meaning and the future of the project ripe-atlas — RIPE Network Coordination Centre"
+[8]: https://labs.ripe.net/author/kistel/ripe-atlas-architecture-how-we-manage-our-probes/?utm_source=chatgpt.com "RIPE Atlas Architecture - How We Manage Our Probes"
+[9]: https://atlas.ripe.net/docs/security/ "Security Disclosures | RIPE Atlas Documentation"
+[10]: https://atlas.ripe.net/docs/releases/firmware_index/5090?utm_source=chatgpt.com "Release of probe firmware 5090 | RIPE Atlas Documentation"
